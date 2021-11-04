@@ -1,0 +1,10 @@
+<div class="col-md-6 m-auto">
+    {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+
+        {{ form_row(form.content) }}
+
+        <button class="btn btn-primary mt-2 btn-lg btn-block">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>
