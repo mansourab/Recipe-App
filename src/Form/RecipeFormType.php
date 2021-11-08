@@ -15,6 +15,8 @@ class RecipeFormType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('categories')
+            ->add('activeTime')
+            ->add('totalTime')
         ;
     }
 

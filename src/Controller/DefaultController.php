@@ -22,19 +22,4 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/recipe", name="recipe_index")
-     */
-    public function recipe()
-    {
-        return $this->render('home/recipe.html.twig');
-    }
-
-    /**
-     * @Route("/search", name="search_index")
-     */
-    public function search()
-    {
-        return $this->render('home/search.html.twig');
-    }
 }

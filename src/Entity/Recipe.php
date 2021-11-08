@@ -45,6 +45,16 @@ class Recipe
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="recipes")
      */
     private $categories;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $activeTime;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $totalTime;
     
 
     public function __construct()
@@ -119,6 +129,30 @@ class Recipe
     public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    public function getActiveTime(): ?string
+    {
+        return $this->activeTime;
+    }
+
+    public function setActiveTime(?string $activeTime): self
+    {
+        $this->activeTime = $activeTime;
+
+        return $this;
+    }
+
+    public function getTotalTime(): ?string
+    {
+        return $this->totalTime;
+    }
+
+    public function setTotalTime(?string $totalTime): self
+    {
+        $this->totalTime = $totalTime;
 
         return $this;
     }

@@ -7,6 +7,12 @@
 
         {{ form_row(form.categories) }}
 
+        {{ form_row(form.activeTime) }}
+
+        {{ form_row(form.totalTime) }}
+
+
+
         <button class="btn btn-primary mt-2 btn-lg btn-block">{{ button_label|default('Enregistrer') }}</button>
     {{ form_end(form) }}
 </div>
