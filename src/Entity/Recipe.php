@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecipeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -38,6 +40,17 @@ class Recipe
      * @Gedmo\Slug(fields={"title"})
      */
     private $slug;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="recipes")
+     */
+    private $categories;
+    
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -80,5 +93,36 @@ class Recipe
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    
 
 }

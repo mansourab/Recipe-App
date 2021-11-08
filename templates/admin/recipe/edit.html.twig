@@ -1,13 +1,13 @@
-{% block title 'Edit recipe details' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block body %}
 
-    <h2 class="text-center">Modifier les détails</h2>
+    <h2 class="text-center mt-4 mb-4">Modifier les détails</h2>
 
     {{ include('admin/recipe/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('post_index') }}">back to list</a>
+    <a href="{{ path('app_admin') }}">back to list</a>
 
-    {{ include('admin/recipe/_delete_form.html.twig') }}
+    {# {{ include('admin/recipe/_delete_form.html.twig') }} #}
 
 {% endblock %}
